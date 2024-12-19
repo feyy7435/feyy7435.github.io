@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@master/devicon.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo" data-key="logo">Portfolio.</a>
+        <nav class="navbar">
+            <a href="#home" style="--i:12;" class="active" data-key="nav-home">Home</a>
+            <a href="#about" style="--i:13;" data-key="nav-about">About</a>
+            <a href="#skills" style="--i:14;" data-key="nav-skills">Skills</a>
+            <a href="#projects" style="--i:15;" data-key="nav-projects">Portfolio</a>
+            <a href="#contact" style="--i:16;" data-key="nav-contact">Contact</a>
+        </nav>
+        <div class="toggle">
+            <i class='bx bx-moon toggle-icon'></i>
+        </div>
+        <div class="bx bx-menu" id="menu-icon"></div>
+        <div class="container-language">
+            <select class="language-select" onchange="changeLanguage(this.value)">
+                <option value="en">English</option>
+                <option value="fr">Français</option>
+            </select>
+        </div>
+    </header>
+     <!-- partie home -->
+    <section class="home" id="home">
+        <div class="home-content">
+            <h3 data-key="home-intro">Hello, I am</h3>
+            <h1>Feyza TINASTEPE</h1>
+            <p data-key="home-description">I'm 19 years old and currently a second-year student pursuing a Bachelor of Technology (BUT) in Computer Science in Annecy, specializing in Data Administration, Management, and Exploitation.</p>
+            <div class="social-media">
+                <a href="https://www.github.com/feyy7435/" style="--i:7;"><i class='bx bxl-github'></i></a>
+                <a href="https://www.instagram.com/feyy_.74/" style="--i:8;"><i class='bx bxl-instagram' ></i></a>
+                <a href="https://www.linkedin.com/in/feyza-tinastepe-32644b2b4/" style="--i:9;"><i class='bx bxl-linkedin' ></i></a>
+            </div>
+            <div class="btn">
+                <a href="CV.pdf" data-key="btn-download-cv" download="CV.pdf">Download CV</a>
+            </div>
+        </div>
+        <div class="profession-container">
+            <div class="profession-box">
+                <div class="profession" style="--i:0;">
+                    <i class='bx bx-code-alt'></i>
+                    <h3 data-key="profession-1">Web Developer</h3>
+                </div>
+                <div class="profession" style="--i:1;">
+                    <i class='bx bxl-postgresql'></i>
+                    <h3 data-key="profession-2">Data Exploitation</h3>
+                </div>
+                <div class="profession"style="--i:2;" >
+                    <i class='bx bxl-meta'></i>
+                    <h3 data-key="profession-3">Business Analyst</h3>
+                </div>
+                <div class="profession" style="--i:3;">
+                    <i class='bx bxs-data'></i>
+                    <h3 data-key="profession-4">System Analyst</h3>
+                </div>
+                <div class="circle"></div>
+            </div>
+            <div class="overlay"></div>
+        </div>
+    </section>
+
+ <!-- partie education -->
+    <section class="education" id="education">
+        <h2 class="heading" data-key="education-title">My <span>Education</span></h2>
+        <div class="timeline">
+            <div class="container right">
+                <div class="content">
+                    <div class="date-left">2023 - Today</div>
+                    <div class="tag">
+                        <h2 data-key="university">University</h2>
+                    </div>
+                    <div class="decs">
+                        <p data-key="education-but">BUT INFO</p>
+                        <p data-key="education-spe">Technical Bachelor's Degree in computer science</p>
+                        <p data-key="education-where">University of Savoy / IUT Annecy, France</p>
+                    </div>
+                </div>
+            </div>
+            <div class="container left">
+                <div class="content">
+                    <div class="date-right">2020 - 2023</div>
+                    <div class="tag">
+                        <h2 data-key="high-school-title">High School</h2>
+                    </div>
+                    <div class="decs">
+                        <p data-key="education-but-2">French Baccalaureate</p>
+                        <p data-key="education-spe-2">High School diploma specialized in science technlogy of laboratory</p>
+                        <p data-key="education-where-2">Jean Monnet High School</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ <!-- partie skills -->
+    <section id="skills">
+        <h2 class="heading" data-key="my-skills">My <span>Skills</span></h2>
+        <div class="portfolio-container">
+        <div class="container1" id="skills">
+            <h3 class="heading-skills" data-key="technical-skills">Technical skills</h3>
+            <div class="Technical-bars">
+                <div class="bar"><i style="color: #c95d2e;" class="bx bxl-html5"></i>/<i style="color: #147bbc" class='bx bxl-css3' ></i>
+                    <div class="indfo">
+                        <span>HTML/CSS</span>
+                    </div>
+                    <div class="progress-line html"> <span></span></div>
+                </div>
+                <div class="bar"><i class='bx bxl-postgresql' ></i>
+                    <div class="indfo">
+                        <span>SQL</span>
+                    </div>
+                    <div class="progress-line sql"><span></span></div>
+                </div>
+                <div class="bar"><i class="devicon-csharp-plain"></i>
+                    <div class="indfo">
+                        <span>C#</span>
+                    </div>
+                    <div class="progress-line c"> <span></span></div>
+                </div>
+                <div class="bar"><i style="color: #b0bc1e;" class="bx bxl-javascript"></i>
+                    <div class="indfo">
+                        <span>Javascript</span>
+                    </div>
+                    <div class="progress-line js"><span></span></div>
+                </div>
+            </div>
+        </div>
+        <div class="container1">
+            <h3 class="heading-skills" data-key="soft-skills">Soft skills</h3>
+            <div class="radial-bars">
+                <div class="radial-bar">
+                    <svg x="0px" y="0px" viewBox="0 0 200 200">
+                        <circle class="progress-bar" cx="100" cy="100" r="80"></circle>
+                        <circle class="path path-1" cx="100" cy="100" r="80"></circle>
+                    </svg>
+                    <div class="percentage">90%</div>
+                    <div class="text" data-key="soft-1">Creativity</div>
+                </div>
+                <div class="radial-bar">
+                    <svg x="0px" y="0px" viewBox="0 0 200 200">
+                        <circle class="progress-bar" cx="100" cy="100" r="80"></circle>
+                        <circle class="path path-2" cx="100" cy="100" r="80"></circle>
+                    </svg>
+                    <div class="percentage">75%</div>
+                    <div class="text" data-key="soft-2">Commuication</div>
+                </div>
+                <div class="radial-bar">
+                    <svg x="0px" y="0px" viewBox="0 0 200 200">
+                        <circle class="progress-bar" cx="100" cy="100" r="80"></circle>
+                        <circle class="path path-3" cx="100" cy="100" r="80"></circle>
+                    </svg>
+                    <div class="percentage">85%</div>
+                    <div class="text" data-key="soft-3">Productivity</div>
+                </div>
+                <div class="radial-bar">
+                    <svg x="0px" y="0px" viewBox="0 0 200 200">
+                        <circle class="progress-bar" cx="100" cy="100" r="80"></circle>
+                        <circle class="path path-4" cx="100" cy="100" r="80"></circle>
+                    </svg>
+                    <div class="percentage">90%</div>
+                    <div class="text" data-key="soft-4">Teamwork</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+ <!-- partie langue -->
+    <section class="languages" id="languages">
+        <h2 class="heading" data-key="languages-title">Languages <span>I Speak</span></h2>
+        <div class="language-list">
+            <div class="language-item">
+                <span class="language-name animated-name" data-key="L-French">French</span>
+                <div class="stars">
+                    <span class="star filled animated-star">★</span>
+                    <span class="star filled animated-star">★</span>
+                    <span class="star filled animated-star">★</span>
+                    <span class="star filled animated-star">★</span>
+                    <span class="star filled animated-star">★</span>
+                </div>
+            </div>
+            <div class="language-item">
+                <span class="language-name animated-name" data-key="L-Turkish">Turkish</span>
+                <div class="stars">
+                    <span class="star filled animated-star">★</span>
+                    <span class="star filled animated-star">★</span>
+                    <span class="star filled animated-star">★</span>
+                    <span class="star filled animated-star">★</span>
+                    <span class="star filled animated-star">★</span>
+                </div>
+            </div>
+            <div class="language-item">
+                <span class="language-name" data-key="L-English">English</span>
+                <div class="stars">
+                    <span class="star filled animated-star">★</span>
+                    <span class="star filled animated-star">★</span>
+                    <span class="star filled animated-star">★</span>
+                    <span class="star animated-star">☆</span>
+                    <span class="star animated-star">☆</span>
+                </div>
+            </div>
+            <div class="language-item">
+                <span class="language-name" data-key="L-Korean">Korean</span>
+                <div class="stars">
+                    <span class="star filled animated-star">★</span>
+                    <span class="star filled animated-star">★</span>
+                    <span class="star filled animated-star">★</span>
+                    <span class="star animated-star">☆</span>
+                    <span class="star animated-star">☆</span>
+                </div>
+            </div>
+            <div class="language-item">
+                <span class="language-name" data-key="L-Spanish">Spanish</span>
+                <div class="stars">
+                    <span class="star filled animated-star">★</span>
+                    <span class="star filled animated-star">★</span>
+                    <span class="star animated-star">☆</span>
+                    <span class="star animated-star">☆</span>
+                    <span class="star animated-star">☆</span>
+                </div>
+            </div>
+        </div>
+    </section>
+ <!-- partie services -->
+    <section class="services" id="services">
+        <h2 class="heading" data-key="my-services">My <span>Services</span></h2>
+        <div class="services-container">
+            <div class="services-box">
+                <i class="bx bx-code-alt"></i>
+                <h3 data-key="services-1">Web Development</h3>
+                <p data-key="services-p1">I can design and develop responsive websites using HTML, CSS, JavaScripts. I also work with backend technologies like Node.js or PHP and databases such as MySQL or MongoDB.</p>
+                <a href="#" class="btn" data-key="about-btn">Read More</a>
+            </div>
+
+            <div class="services-box">
+                <i class="bx bxl-postgresql"></i>
+                <h3 data-key="services-2">Data Management and Analysis</h3>
+                <p data-key="services-p2">I help organize and analyze large datasets using tools like SQL, Python, and Excel. I can create databases, perform data extraction, and generate reports to support business decision-making.</p>
+                <a href="#" class="btn" data-key="about-btn">Read More</a>
+            </div>
+            <div class="services-box">
+                <i class="bx bxl-meta"></i>
+                <h3 data-key="services-3">Virtual Machine Setup</h3>
+                <p data-key="services-p3">I can set up and manage virtual machines (VMs) to optimize IT resources. Using tools like VMware or VirtualBox, I can create isolated environments for testing, development, or server management.</p>
+                <a href="#" class="btn" data-key="about-btn">Read More</a>
+            </div>
+        </div>
+    </section>
+ <!-- partie projects-->
+    <section class="projects" id="projects">
+        <h2 class="heading" data-key="latest-projet">Latest <span>Projects</span></h2>
+        <div class="projects-box">
+            <div class="project-card">
+                <img src="image/uber.jpg" alt="">
+                <h3>Uber</h3>
+                <p data-key="project-1">Group project: develop a website using Laravel, working as a team of five.</p>
+                <a href="https://github.com/feyy7435/Uber.git" class="btn" data-key="project-btn">See Project</a>
+            </div>
+            <div class="project-card">
+                <img src="image/UGUR.jpg" alt="">
+                <h3>UGUR</h3>
+                <p data-key="project-2">UGUR: A Unity game focused on completing challenges and objectives within a set time.</p>
+                <a href="https://github.com/Shuuss/UGUR.git" class="btn" data-key="project-btn">See Project</a>
+            </div>
+            <div class="project-card">
+                <img src="image/imgSliceFruit.jpg" alt="">
+                <h3>Slice Fruit</h3>
+                <p data-key="project-3">Slice Fruit: A game where players slice fruits within a time limit to score points.</p>
+                <a href="https://github.com/feyy7435/SliceFruit.git" class="btn" data-key="project-btn">See Project</a>
+            </div>
+            <div class="project-card">
+                <img src="image/phaser.jpg" alt="">
+                <h3>Phaser</h3>
+                <p data-key="project-4">Phaser TD: A class project using Phaser to create a simple game, applying concepts like animations, interactions, and game logic.</p>
+                <a href="https://github.com/feyy7435/Phaser.git" class="btn" data-key="project-btn">See Project</a>
+            </div>
+            <div class="project-card">
+                <img src="image/ProjetBotanicFigma.jpg" alt="">
+                <h3>Botanic</h3>
+                <p data-key="project-5">Botanic: Group project to develop a desktop application using WPF and C#, focusing on creating an interactive and user-friendly interface.</p>
+                <a href="https://github.com/feyy7435/Projet_Botanic.git" class="btn" data-key="project-btn">See Project</a>
+            </div>
+            <div class="project-card">
+                <img src="image/rasberrypi3.png" alt="">
+                <h3>RaspberryPi-3 User Guide</h3>
+                <p data-key="project-6">RaspberryPi-3: Create a guide for setting up the Raspberry Pi 3, covering SD card preparation, OS installation, and network setup.</p>
+                <a href="https://github.com/feyy7435/RaspberryPi-3.git" class="btn" data-key="project-btn">See Project</a>
+            </div>
+        </div>
+    </section>
+     <!-- partie hobbies -->
+    <section class="interests" id="interests">
+        <h2 class="heading" data-key="my-interest">My <span>Interests</span></h2>
+        <div class="interests-container">
+            <div class="interest-item">
+                <img src="image/sport.jpg" alt="Hobby 1">
+                <h3 data-key="interest-1">Sport</h3>
+            </div>
+            <div class="interest-item">
+                <img src="image/dessiner.jpg" alt="Hobby 2">
+                <h3 data-key="interest-2">Draw</h3>
+            </div>
+            <div class="interest-item">
+                <img src="image/bestlife.jpg" alt="Hobby 3">
+                <h3 data-key="interest-3">Watch series</h3>
+            </div>
+            <div class="interest-item">
+                <img src="image/drive.jpg" alt="Hobby 4">
+                <h3 data-key="interest-4">To Drive</h3>
+            </div>
+        </div>
+    </section>
+    <!-- partie contact -->
+    <section class="contact" id="contact">
+        <h2 class="heading" data-key="contact">Contact <span>Me!</span></h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3 data-key="contact-info">Contact Information</h3>
+                <p data-key="contact-info-1"><strong>Phone :</strong> +33(0) 7 67 36 63 01</p>
+                <p data-key="contact-info-2"><strong>Email :</strong> Feyza.Tinastepe@etu.univ-smb.fr</p>
+                <p data-key="contact-info-3"><strong>Address :</strong> 74100 Vile-La-Grand, France</p>
+            </div>
+            <form action="#">
+                <div class="input-box">
+                    <div class="input-field field">
+                        <input type="text" data-key="field-1" placeholder="Full Name" id="name" class="item" autocomplete="off">
+                        <div class="error-txt" data-key="text-1">Full Name can't be blank</div>
+                    </div>
+                    <div class="input-field field">
+                        <input type="text" data-key="field-2" placeholder="Email Address" id="email" class="item" autocomplete="off">
+                        <div class="error-txt email" data-key="text-2">Email Address can't be blank</div>
+                    </div>
+                </div>
+                <div class="input-box">
+                    <div class="input-field field">
+                        <input type="text"  data-key="field-3" placeholder="Phone Number" id="phone" class="item" autocomplete="off">
+                        <div class="error-txt" data-key="text-3">Phone Number can't be blank</div>
+                    </div>
+                    <div class="input-field field">
+                        <input type="text"  data-key="field-4" placeholder="Subject" id="subject" class="item" autocomplete="off">
+                        <div class="error-txt" data-key="text-4">Subject can't be blank</div>
+                    </div>
+                </div>
+                <div class="textarea-field field">
+                    <textarea id="message" cols="30" rows="10" placeholder="Your Message" class="item" autocomplete="off"></textarea>
+                    <div class="error-txt" data-key="text-5">Message can't be blank</div>
+                </div>
+                <button type="submit" data-key="text-6">Send Message</button>
+            </form>
+        </div>
+    </section>
+        <footer>
+            <div class="footer-iconTop">
+                <a href="#home"><i class="bx bx-up-arrow-alt"></i></a>
+            </div>
+            <ul class="list">
+                <li><a href="#home" data-key="nav-home">Home</a></li>
+                <li><a href="#about" data-key="nav-about">About</a></li>
+                <li><a href="#skills" data-key="nav-skills">Skills</a></li>
+                <li><a href="#projects" data-key="nav-portfolio">Portfolio</a></li>
+                <li><a href="#contact" data-key="nav-contact">Contact</a></li>
+            </ul>
+            <div class="social-menu">
+                <a href="https://www.github.com/feyy7435/" style="--i:7;"><i class='bx bxl-github'></i></a>
+                <a href="#" style="--i:8;"><i class='bx bxl-instagram'></i></a>
+                <a href="https://www.linkedin.com/in/feyza-tinastepe-32644b2b4/" style="--i:9;"><i class='bx bxl-linkedin'></i></a>
+            </div>
+            <div class="copyright" data-key="copy">Copyright &copy by Feyza Tinastepe | All Rights Reserved</div>
+        </footer>
+        <script src="https://unpkg.com/scrollreveal"></script>
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="main.js"></script>
+</body>
+</html>
