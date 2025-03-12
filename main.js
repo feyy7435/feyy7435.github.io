@@ -18,7 +18,7 @@ const translations = {
         "nav-portfolio": "Portfolio",
         "nav-contact": "Contact",
         "home-intro": "Hello, I am",
-        "home-description": "I'm 19 years old and currently a second-year student pursuing a Bachelor of Technology (BUT) in Computer Science in Annecy, specializing in Data Administration, Management, and Exploitation (Track C). I have a strong interest in databases and business intelligence tools.",
+        "home-description": "I'm 20 years old and currently a second-year student pursuing a Bachelor of Technology (BUT) in Computer Science in Annecy, specializing in Data Administration, Management, and Exploitation (Track C). I have a strong interest in databases and business intelligence tools.",
         "btn-download-cv": "Download CV",
         "profession-1": "Web Developer",
         "profession-2": "Data Exploitation",
