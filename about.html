@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Feyza Tinastepe</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body class="about-page">
+
+<header class="header">
+    <a href="index.html" class="logo" data-key="logo">Portfolio.</a>
+    
+    <nav class="navbar">
+        <a href="index.html" data-key="nav-home">Home</a>
+        <a href="about.html" class="active" data-key="nav-about">About</a>
+        <a href="education.html" data-key="nav-education">Education</a>
+        <a href="skills.html" data-key="nav-skills">Skills</a>
+        <a href="projects.html" data-key="nav-portfolio">Portfolio</a>
+        <a href="dashboard.html" data-key="nav-dashboard">Dashboard</a>
+        <a href="contact.html" data-key="nav-contact">Contact</a>
+    </nav>
+
+    <div class="header-right">
+    <i class='bx bx-moon toggle-icon toggle'></i>
+    
+    <select class="language-select">
+        <option value="en">EN</option>
+        <option value="fr">FR</option>
+    </select>
+    
+    <div class='bx bx-menu' id="menu-icon"></div>
+</div>
+</header>
+
+<section class="about-hero">
+    <div class="about-container">
+        <div class="about-text about-content">
+            <h2 class="greeting" data-key="about-greeting">HI THERE!</h2>
+            <h1 class="main-name" data-key="about-name">I'M <span>FEYZA</span></h1>
+            
+            <div class="badges">
+                <span class="badge-pink" data-key="badge-data">DATA STUDENT</span>
+                <span class="badge-dark" data-key="badge-design">DESIGN ENTHUSIAST</span>
+            </div>
+            
+            <p class="description" data-key="about-desc">
+                I am a 21-year-old student currently pursuing a <strong>Bachelor's degree in Computer Science (AGED)</strong>. 
+                My journey began with a scientific background (2020-2023), where I developed a rigorous analytical 
+                mindset that I now apply to data analysis and software development. 
+                I am also passionate about sports (Basketball, Volleyball) and graphic design.
+            </p>
+            
+            <div class="about-btns">
+                <a href="contact.html" class="btn-more" data-key="btn-contact-me">CONTACT ME</a>
+                <a href="cv-feyza-tinastepe.pdf" download class="btn-cv">
+                    <span data-key="btn-download-cv">DOWNLOAD CV</span> <i class='bx bx-download'></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="about-visual about-img">
+            <div class="circle-frame">
+                <img src="images/mon_portrait.jpg" alt="Feyza's Portrait">
+            </div>
+            
+            <div class="nav-arc-container">
+                <div class="arc-line"></div>
+                <div class="arc-icons-wrapper">
+                    <a href="index.html" class="arc-icon item-1" title="Home"><i class='bx bx-home-alt'></i></a>
+                    <a href="about.html" class="arc-icon item-2" title="About"><i class='bx bx-user'></i></a>
+                    <a href="skills.html" class="arc-icon item-3" title="Skills"><i class='bx bx-bar-chart-alt-2'></i></a>
+                    <a href="projects.html" class="arc-icon item-4" title="Projects"><i class='bx bx-palette'></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://unpkg.com/scrollreveal"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="main.js"></script>
+</body>
+</html>

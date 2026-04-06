@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Dashboard - Feyza Tinastepe</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="dashboard-page">
+
+    <header class="header">
+        <a href="index.html" class="logo" data-key="logo">Portfolio.</a>
+        
+        <nav class="navbar">
+            <a href="index.html" data-key="nav-home">Home</a>
+            <a href="about.html" data-key="nav-about">About</a>
+            <a href="education.html" data-key="nav-education">Education</a>
+            <a href="skills.html" data-key="nav-skills">Skills</a>
+            <a href="projects.html" data-key="nav-portfolio">Portfolio</a>
+            <a href="dashboard.html" class="active" data-key="nav-dashboard">Dashboard</a>
+            <a href="contact.html" data-key="nav-contact">Contact</a>
+        </nav>
+
+        <div class="header-right">
+            <i class='bx bx-moon toggle-icon toggle'></i>
+            
+            <select class="language-select">
+                <option value="en">EN</option>
+                <option value="fr">FR</option>
+            </select>
+            
+            <div class='bx bx-menu' id="menu-icon"></div>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <h1 class="page-title" data-key="dash-title">Data <span>Analytics</span></h1>
+        <p class="subtitle" data-key="dash-subtitle">Statistical analysis of my technical profile and achievements.</p>
+
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-icon"><i class='bx bx-data'></i></div>
+                <div class="kpi-info">
+                    <h3 class="counter" data-target="5">0</h3>
+                    <p data-key="kpi-bigdata">Big Data Projects</p>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon"><i class='bx bx-brain'></i></div>
+                <div class="kpi-info">
+                    <h3 class="counter" data-target="3">0</h3>
+                    <p data-key="kpi-ai">AI Models</p>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon"><i class='bx bx-code-curly'></i></div>
+                <div class="kpi-info">
+                    <h3 class="counter" data-target="13">0</h3>
+                    <p data-key="kpi-total">Total Projects</p>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon"><i class='bx bx-globe'></i></div>
+                <div class="kpi-info">
+                    <h3 class="counter" data-target="5">0</h3>
+                    <p data-key="kpi-lang">Languages</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="charts-grid">
+            
+            <div class="chart-card">
+                <h3 data-key="chart-radar-title"><i class='bx bx-radar'></i> Data Spectrum</h3>
+                <div class="chart-wrapper">
+                    <canvas id="dataRadarChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <h3 data-key="chart-polar-title"><i class='bx bx-atom'></i> Tech Ecosystem</h3>
+                <div class="chart-wrapper">
+                    <canvas id="techPolarChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card wide">
+                <h3 data-key="chart-bar-title"><i class='bx bx-bar-chart-alt-2'></i> Technical Mastery Level</h3>
+                <div class="chart-wrapper">
+                    <canvas id="masteryBarChart"></canvas>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="main.js"></script>
+
+    <script>
+        // --- VARIABLES GLOBALES POUR LES GRAPHIQUES ---
+        let radarChart, polarChart, barChart;
+
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            // 1. ANIMATION DES CHIFFRES (Compteur)
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const increment = target / 50; // Vitesse
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(updateCount, 40);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+            });
+
+            // 2. INITIALISATION DES GRAPHIQUES
+            initCharts();
+
+            // 3. ÉCOUTEUR DE CHANGEMENT DE THÈME (DARK MODE)
+            // Cela permet de redessiner les graphiques quand le body change de classe
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.attributeName === "class") {
+                        // On détruit les anciens graphiques et on les recrée avec les nouvelles couleurs
+                        if(radarChart) radarChart.destroy();
+                        if(polarChart) polarChart.destroy();
+                        if(barChart) barChart.destroy();
+                        initCharts();
+                    }
+                });
+            });
+            observer.observe(document.body, { attributes: true });
+        });
+
+        // --- FONCTION POUR DESSINER LES GRAPHIQUES ---
+        function initCharts() {
+            // Détection du mode sombre
+            const isDark = document.body.classList.contains('dark-mode');
+            
+            // Couleurs dynamiques selon le thème
+            const textColor = isDark ? '#ffffff' : '#555555';
+            const gridColor = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)';
+            const backdropColor = isDark ? 'rgba(255, 255, 255, 0.05)' : 'transparent';
+
+            Chart.defaults.font.family = "'Poppins', sans-serif";
+            Chart.defaults.color = textColor;
+
+            // --- A. RADAR CHART ---
+            const ctxRadar = document.getElementById('dataRadarChart').getContext('2d');
+            const gradientRadar = ctxRadar.createLinearGradient(0, 0, 0, 400);
+            gradientRadar.addColorStop(0, 'rgba(255, 133, 162, 0.5)'); 
+            gradientRadar.addColorStop(1, 'rgba(92, 45, 145, 0.5)'); 
+
+            radarChart = new Chart(ctxRadar, {
+                type: 'radar',
+                data: {
+                    labels: ['Data Eng.', 'Machine Learning', 'Data Viz (BI)', 'SQL / NoSQL', 'Scripting (Py)', 'Cloud (Azure)'],
+                    datasets: [{
+                        label: 'Skills',
+                        data: [85, 70, 90, 95, 90, 60],
+                        backgroundColor: gradientRadar,
+                        borderColor: '#ff85a2',
+                        pointBackgroundColor: isDark ? '#1f242d' : '#fff',
+                        pointBorderColor: '#5C2D91',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: { color: gridColor },
+                            grid: { color: gridColor },
+                            pointLabels: {
+                                font: { size: 11, weight: '600' },
+                                color: textColor
+                            },
+                            suggestMin: 0, suggestMax: 100,
+                            ticks: { display: false, backdropColor: backdropColor }
+                        }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+
+            // --- B. POLAR AREA ---
+            const ctxPolar = document.getElementById('techPolarChart').getContext('2d');
+            polarChart = new Chart(ctxPolar, {
+                type: 'polarArea',
+                data: {
+                    labels: ['Neo4j', 'Knime', 'Power BI', 'Unity', 'MLxtend'],
+                    datasets: [{
+                        data: [80, 85, 90, 75, 70],
+                        backgroundColor: [
+                            'rgba(255, 133, 162, 0.7)', 
+                            'rgba(92, 45, 145, 0.7)',   
+                            'rgba(55, 118, 171, 0.7)',  
+                            'rgba(247, 223, 30, 0.7)',  
+                            'rgba(71, 162, 72, 0.7)'    
+                        ],
+                        borderWidth: isDark ? 0 : 1,
+                        borderColor: isDark ? 'transparent' : '#fff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            grid: { color: gridColor },
+                            ticks: { display: false, backdropColor: 'transparent' }
+                        }
+                    },
+                    plugins: {
+                        legend: { 
+                            position: 'bottom', 
+                            labels: { color: textColor, usePointStyle: true, padding: 20 } 
+                        }
+                    }
+                }
+            });
+
+            // --- C. BAR CHART ---
+            const ctxBar = document.getElementById('masteryBarChart').getContext('2d');
+            const gradientBar = ctxBar.createLinearGradient(0, 0, 600, 0);
+            gradientBar.addColorStop(0, '#ff85a2'); 
+            gradientBar.addColorStop(1, '#5C2D91'); 
+
+            barChart = new Chart(ctxBar, {
+                type: 'bar',
+                data: {
+                    labels: ['Python', 'SQL', 'C#', 'JavaScript', 'Power BI'],
+                    datasets: [{
+                        label: 'Level (%)',
+                        data: [95, 90, 85, 75, 88],
+                        backgroundColor: gradientBar,
+                        borderRadius: 10,
+                        barPercentage: 0.5
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            grid: { color: gridColor },
+                            ticks: { color: textColor },
+                            max: 100
+                        },
+                        y: {
+                            grid: { display: false },
+                            ticks: { font: { weight: '600' }, color: textColor }
+                        }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+        }
+    </script>
+</body>
+</html>              

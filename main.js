@@ -1,323 +1,489 @@
-//btn claire/sombre 
+/* =========================================
+   1. DARK/LIGHT MODE
+   ========================================= */
 const toggleIcon = document.querySelector('.toggle-icon');
+function updateIcon(isDark) {
+    if (isDark) {
+        toggleIcon.classList.remove('bx-moon');
+        toggleIcon.classList.add('bx-sun'); // Show sun when in dark mode
+    } else {
+        toggleIcon.classList.remove('bx-sun');
+        toggleIcon.classList.add('bx-moon'); // Show moon when in light mode
+    }
+}
 
-toggleIcon.addEventListener('click', () =>{
-    toggleIcon.classList.toggle('bx-sun');
-    document.body.classList.toggle('dark-mode');
-});
+
+// Gestion du click
+if (toggleIcon) {
+    toggleIcon.addEventListener('click', () => {
+        // Bascule l'icône (Soleil <-> Lune)
+        toggleIcon.classList.toggle('bx-sun');
+        // Bascule la classe sur le body
+        document.body.classList.toggle('dark-mode');
+        
+        // Sauvegarder la préférence
+        const isDark = document.body.classList.contains('dark-mode');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+}
+
+// Appliquer le thème sauvegardé au chargement
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    if (toggleIcon) toggleIcon.classList.add('bx-sun');
+}
 
 
-
-// Dictionnaire des traductions
+/* =========================================
+   2. DICTIONNAIRE DE TRADUCTION
+   ========================================= */
 const translations = {
     en: {
         "logo": "Portfolio.",
         "nav-home": "Home",
         "nav-about": "About",
+        "nav-education": "Education",
         "nav-skills": "Skills",
         "nav-portfolio": "Portfolio",
+        "nav-dashboard": "Dashboard",
         "nav-contact": "Contact",
+        
+        // HOME
         "home-intro": "Hello, I am",
-        "home-description": "I'm 20 years old and currently a second-year student pursuing a Bachelor of Technology (BUT) in Computer Science in Annecy, specializing in Data Administration, Management, and Exploitation (Track C). I have a strong interest in databases and business intelligence tools.",
-        "btn-download-cv": "Download CV",
-        "profession-1": "Web Developer",
-        "profession-2": "Data Exploitation",
-        "profession-3": "Blockchain Analyst",
-        "profession-4": "Data Analyst", 
-        "portfolio-heading": "Latest Projects",
-        "education-title": "My Education",
-        "university": "University",
-        "education-but": "BUT INFO",
-        "education-spe": "Technical Bachelor's Degree in computer science",
-        "education-where": "University of Savoy / IUT Annecy, France",
-        "high-school-title": "High School",
-        "education-but-2": "French Baccalaureate",
-        "education-spe-2": "High School diploma specialized in science technlogy of laboratory",
-        "education-where-2": "Jean Monnet High School / Annemasse, France",
-        "languages-title": "Languages I Speak",
-        "L-French": "French",
-        "L-Turkish": "Turkish",
-        "L-English": "English",
-        "L-Korean": "Korean",
-        "L-Spanish": "Spanish",
-        "my-skills": "My Skills",
-        "about-hi" : "Hi, I'm Here To Help Your Next Project !",
-        "about-p" : "I am a passionate Computer Science student with a strong interest in web development, data management, and system analysis. I am eager to apply my skills and knowledge to solve real-world challenges and contribute to exciting projects.",
-        "about-btn" : "Read More",
-        "technical-skills" :"Technical skills",
-        "soft-skills" :"Soft skills",
-        "soft-1": "Creativity",
-        "soft-2": "Commuication",
-        "soft-3": "Productivity",
-        "soft-4": "Teamwork",
-        "my-services" : "My Services",
-        "services-1" : "Web Development",
-        "services-2" : "Data Management and Analysis",
-        "services-3" : "Virtual Machine Setup",
-        "services-p1" : "I can design and develop responsive websites using HTML, CSS, JavaScripts. I also work with backend technologies like Node.js or PHP and databases such as MySQL or MongoDB.",
-        "services-p2" : "I help organize and analyze large datasets using tools like SQL, Python, and Excel. I can create databases, perform data extraction, and generate reports to support business decision-making.",
-        "services-p3" : "I can set up and manage virtual machines (VMs) to optimize IT resources. Using tools like VMware or VirtualBox, I can create isolated environments for testing, development, or server management.",  
-        "latest-projet" :"Latest Projects",
-        "project-1" : "Group project: develop a website using Laravel, working as a team of five.",
-        "project-2" : "UGUR: A Unity game focused on completing challenges and objectives within a set time.",
-        "project-3" : "Slice Fruit: A game where players slice fruits within a time limit to score points.",
-        "project-4" : "Phaser TD: A class project using Phaser to create a simple game, applying concepts like animations, interactions, and game logic.",
-        "project-5" : "Botanic: Group project to develop a desktop application using WPF and C#, focusing on creating an interactive and user-friendly interface.",
-        "project-6" : "RaspberryPi-3: Create a guide for setting up the Raspberry Pi 3, covering SD card preparation, OS installation, and network setup.",
-        "project-btn" : "See Project",
-        "my-interest" : "My Interests",
-        "interest-1" : "Sport",
-        "interest-2" : "Draw",
-        "interest-3" : "Watch series",
-        "interest-4" : "To Drive",
-        "contact" :"Contact Me!",
-        "contact-info" : "Contact Information",
-        "contact-info-1" : "Phone : +33(0) 7 67 36 63 01" ,
-        "contact-info-2" : "Email : Feyza.Tinastepe@etu.univ-smb.fr",
-        "contact-info-3" : "Address : 74100 Vile-La-Grand, France",
-        "text-1" : "Full Name can't be blank",
-        "text-2" : "Email Address can't be blank",
-        "text-3" : "Phone Number can't be blank",
-        "text-4" : "Subject can't be blank",
-        "text-5" : "Message can't be blank",
-        "text-6" : "Send Message",
-        "field-1" : "Full Name",
-        "field-2" :"Email Address",
-        "field-3" : "Phone Number",
-        "field-4" :"Subject",
-        "copy" : "Copyright &copy by Feyza Tinastepe | All Rights Reserved"
+        "home-description": "I'm 20 years old and currently a second-year student pursuing a Bachelor of Technology (BUT) in Computer Science in Annecy...",
+        
+        // ABOUT
+        "about-greeting": "HI THERE!",
+        "about-name": "I'M <span>FEYZA</span>",
+        "badge-data": "DATA STUDENT",
+        "badge-design": "DESIGN ENTHUSIAST",
+        "about-desc": "I am a 21-year-old student currently pursuing a <strong>Bachelor's degree in Computer Science (AGED)</strong>. My journey began with a scientific background (2020-2023), where I developed a rigorous analytical mindset that I now apply to data analysis and software development. I am also passionate about sports (Basketball, Volleyball) and graphic design.",
+        "btn-contact-me": "CONTACT ME",
+        "btn-download-cv": "DOWNLOAD CV",
+        
+        // EDUCATION
+        "edu-hs-date": "2020 - 2023",
+        "edu-hs-title": "High School Diploma (STL)",
+        "edu-hs-place": "Jean Monnet High School, Annemasse",
+        "edu-hs-desc": "Science and Laboratory Technologies. Graduated with Honors (Mention Bien).",
+        "edu-but1-date": "2023 - 2025",
+        "edu-but1-title": "Bachelor of Technology in CS",
+        "edu-but1-place": "IUT Annecy, France",
+        "edu-but1-desc": "<strong>Initial Training</strong>. Acquisition of fundamentals in software development, web technologies, and databases.",
+        "edu-pixel-date": "March - June 2025",
+        "edu-pixel-title": "Data Internship",
+        "edu-pixel-place": "PixelRaise, Fillinges",
+        "edu-pixel-desc": "Development of web solutions and data processing automation.",
+        "edu-but2-date": "2025 - Present",
+        "edu-but2-title": "Bachelor of Technology in CS",
+        "edu-but2-place": "Tetras Training Center, Annecy",
+        "edu-but2-desc": "Specialization in <strong>AGED</strong> (Data Administration, Management, and Exploitation) via work-study program.",
+        "edu-work-date": "2025 - Present",
+        "edu-work-title": "Data Apprentice",
+        "edu-work-place": "Annemasse Agglo, Ville-La-Grand",
+        "edu-work-desc": "Applying data management and governance within a local government authority.",
+
+        // DASHBOARD
+        "dash-title": "Data <span>Analytics</span>",
+        "dash-subtitle": "Statistical analysis of my technical profile and achievements.",
+        "kpi-bigdata": "Big Data Projects",
+        "kpi-ai": "AI Models",
+        "kpi-total": "Total Projects",
+        "kpi-lang": "Languages",
+        "chart-radar-title": "<i class='bx bx-radar'></i> Data Spectrum",
+        "chart-polar-title": "<i class='bx bx-atom'></i> Tech Ecosystem",
+        "chart-bar-title": "<i class='bx bx-bar-chart-alt-2'></i> Technical Mastery Level",
+
+        // SKILLS
+        "skills-title": "Technical <span>Dashboard</span>",
+        "filter-all": "All",
+        "filter-data": "Data & Analytics",
+        "filter-dev": "Development",
+        "filter-design": "Creative & CMS",
+        "filter-tools": "Management",
+        "lang-title": "<i class='bx bx-globe'></i> Languages",
+        "lang-fr": "French",
+        "lang-tr": "Turkish",
+        "lang-en": "English",
+        "lang-kr": "Korean",
+        "lang-es": "Spanish",
+        "lvl-native": "Native/Fluent",
+        "lvl-b2": "B2 Upper Intermediate",
+        "lvl-b1b2": "B1/B2 Intermediate",
+        "lvl-b1": "B1 Lower Intermediate",
+        "soft-title": "<i class='bx bx-star'></i> Soft Skills",
+        "soft-creativity": "🎨 Creativity",
+        "soft-comm": "📢 Communication",
+        "soft-prod": "📈 Productivity",
+        "soft-team": "🤝 Teamwork",
+
+        // PROJECTS
+        "proj-title": "My <span>Projects</span>",
+        "proj-subtitle": "A selection of my work in Data, Web Development, and Software Engineering.",
+        "btn-code": "Code",
+        "btn-progress": "In Progress",
+        "cat-bigdata": "Big Data & AI",
+        "proj-imdb-title": "IMDb Sentiment Analysis",
+        "proj-imdb-desc": "End-to-end decision-making architecture: Optimized SQL Server base (OLTP), Data Warehouse (OLAP), and AI models (NLP) for review sentiment analysis.",
+        "cat-mining": "Data Mining",
+        "proj-mba-title": "Market Basket Analysis",
+        "proj-mba-desc": "E-commerce transaction analysis: data cleaning, descriptive statistics, and association rule extraction (Apriori algorithm).",
+        "cat-graph": "Graph Database",
+        "proj-neo-title": "Social Network Analysis",
+        "proj-neo-desc": "Modeling and analysis of user interactions. Community detection and centrality calculations using Cypher queries.",
+        "cat-de-bi": "Data Engineering & BI",
+        "proj-off-title": "Open Food Facts Analytics",
+        "proj-off-desc": "Full BI architecture (OLTP/OLAP). ETL pipeline via Knime, Power BI dashboards, and AI models for predictive analytics.",
+        "cat-db": "Database & Analytics",
+        "proj-sco-title": "Scodoc Management",
+        "proj-sco-desc": "Academic data management: Full modeling (UML), SQL implementation on PostgreSQL, and Power BI reporting.",
+        "cat-cyber": "Cybersecurity",
+        "proj-sec-title": "Secure File Transfer",
+        "proj-sec-desc": "Secure Python client-server system. Key exchange via RSA, file encryption using AES, and SHA-3 hashing.",
+        "cat-web": "Web Development",
+        "proj-hack-title": "Hackathon Annecy",
+        "proj-hack-desc": "Group project: Development of the IAF website based on client requirements within a 48-hour deadline.",
+        "cat-webapp": "Web App",
+        "proj-uber-title": "Uber Project",
+        "proj-uber-desc": "Development of an Uber clone website in a team of five, utilizing MVC architecture.",
+        "cat-game": "Game Dev",
+        "proj-ugur-title": "UGUR",
+        "proj-ugur-desc": "A Unity-based game focused on completing challenges and objectives within a strict time limit.",
+        "proj-slice-title": "Slice Fruit",
+        "proj-slice-desc": "Arcade-style game where players slice falling fruit within a time limit to score points.",
+        "cat-2d": "2D Game",
+        "proj-phaser-title": "Phaser TD",
+        "proj-phaser-desc": "Class project using the Phaser framework: implementing animations, interactions, and game logic.",
+        "cat-desktop": "Desktop App",
+        "proj-bot-title": "Botanic Management",
+        "proj-bot-desc": "Desktop management application featuring an interactive and user-friendly interface.",
+        "cat-hard": "Hardware & Guide",
+        "proj-rpi-title": "Raspberry Pi 3 Guide",
+        "proj-rpi-desc": "Detailed configuration guide: SD card preparation, OS installation, and network setup.",
+
+        // CONTACT
+        "contact-title": "Contact <span>Me!</span>",
+        "contact-info-title": "Contact Information",
+        "contact-info-sub": "Feel free to reach out to me for any opportunities or collaborations.",
+        "contact-phone": "Phone:",
+        "contact-email": "Email:",
+        "contact-addr": "Address:",
+        "contact-follow": "Follow me:",
+        "form-title": "Send a Message",
+        "ph-name": "Full Name",
+        "ph-email": "Email Address",
+        "ph-phone": "Phone Number",
+        "ph-subject": "Subject",
+        "ph-message": "Your message...",
+        "btn-send": "Send",
+        "copy": "Copyright &copy by Feyza Tinastepe | All Rights Reserved"
     },
     fr: {
         "logo": "Portfolio.",
         "nav-home": "Accueil",
         "nav-about": "À Propos",
+        "nav-education": "Formation",
         "nav-skills": "Compétences",
         "nav-portfolio": "Portfolio",
+        "nav-dashboard": "Tableau de Bord",
         "nav-contact": "Contact",
+
+        // HOME
         "home-intro": "Bonjour, je suis",
-        "home-description": "J'ai 20 ans et je suis actuellement étudiante en deuxième année d'une Bachelore de Technologie (BUT) en Informatique à Annecy, spécialité Administration, Gestion et Exploitation des Données (Parcours C). J'ai un fort intérêt pour les bases de données et les outils de business intelligence.",
-        "btn-download-cv": "Télécharger le CV",
-        "profession-1": "Développeur Web",
-        "profession-2": "Gestion De Données",
-        "profession-3": "Analyste Blockchain",
-        "profession-4": "Analyse De Données",
-        "portfolio-heading": "Derniers Projets",
-        "education-title": "Mes Educations",
-        "university": "Université",
-        "education-but": "BUT INFO",
-        "education-spe": "Bachelor technique en informatique",
-        "education-where": "Univertsité Savoie Mont-Blanc / IUT d'Annecy, France",
-        "high-school-title": "High School", 
-        "education-but-2": "Baccaleauréat Français",
-        "education-spe-2": "Baccaleauréat Technologique spécialisées en sciences techniques de laboratoire",
-        "education-where-2": "Lycée Jean Monnet / Annemasse, France",
-        "languages-title": "Les Langues que je parle",
-        "L-French": "Français",
-        "L-Turkish": "Turc",
-        "L-English": "Anglais",
-        "L-Korean": "Coréen",
-        "L-Spanish": "Espagnol",
-        "my-skills": "Mes Skills",
-        "about-hi" : "Bonjour, je suis là pour vous aider dans votre prochain projet !",
-        "about-p" : "Je suis un étudiant passionné en informatique avec un fort intérêt pour le développement Web, la gestion de données et l'analyse de systèmes. Je suis impatient d'appliquer mes compétences et mes connaissances pour résoudre des défis du monde réel et contribuer à des projets passionnants.",
-        "about-btn" : "En savoir plus",
-        "technical-skills" :"Compétences techniques",
-        "soft-skills" :"Compétences générales",
-        "soft-1": "Créativité",
-        "soft-2": "Commuication",
-        "soft-3": "Productivité",
-        "soft-4": "Travail d'équipe",
-        "my-services" : "Mes Sercvices",
-        "services-1" : "Développement Web",
-        "services-2" : "Gestion et analyse des données",
-        "services-3" : "Configuration de la machine virtuelle",
-        "services-p1" : "Je peux concevoir et développer des sites Web réactifs en utilisant HTML, CSS et JavaScript. Je travaille également avec des technologies backend comme Node.js ou PHP et des bases de données comme MySQL ou MongoDB.",
-        "services-p2" :"J'aide à organiser et analyser de grands ensembles de données à l'aide d'outils tels que SQL, Python et Excel. Je peux créer des bases de données, effectuer des extractions de données et générer des rapports pour soutenir la prise de décision commerciale.",
-        "services-p3" : "Je peux configurer et gérer des machines virtuelles (VM) pour optimiser les ressources informatiques. À l'aide d'outils comme VMware ou VirtualBox, je peux créer des environnements isolés pour les tests, le développement ou la gestion des serveurs.",
-        "latest-projet" :"Derniers projets",
-        "project-1" : "Projet de groupe : développer un site internet sous Laravel, en équipe de cinq personnes.",
-        "project-2" : "UGUR : un jeu Unity axé sur la réalisation de défis et d'objectifs dans un délai déterminé.",
-        "project-3" : "Slice Fruit : Un jeu dans lequel les joueurs coupent des fruits dans un délai imparti pour marquer des points.",
-        "projetc-4" : "Phaser TD : un projet de classe utilisant Phaser pour créer un jeu simple, appliquant des concepts tels que les animations, les interactions et la logique du jeu.",
-        "project-5" : "Botanic : Projet de groupe visant à développer une application bureautique utilisant WPF et C#, axé sur la création d'une interface interactive et conviviale.",
-        "project-6" : "RaspberryPi-3 : créez un guide pour la configuration du Raspberry Pi 3, couvrant la préparation de la carte SD, l'installation du système d'exploitation et la configuration du réseau.",
-        "project-btn" : "Voir le projet",
-        "my-interest" : "Mes centres d'intérêt",
-        "interest-1" : "Sport",
-        "interest-2" : "Dessiner",
-        "interest-3" : "Regarder des séries",
-        "interest-4" : "Conduire",
-        "contact" :"Me Contacter!",
-        "contact-info" : "Coordonnées",
-        "contact-info-1" : "Téléphone : +33(0) 7 67 36 63 01" ,
-        "contact-info-2" : "Adresse Mail  : Feyza.Tinastepe@etu.univ-smb.fr",
-        "contact-info-3" : "Adresse : 74100 Ville-La-Grand, France",
-        "text-1" : "Le nom complet ne peut pas être vide",
-        "text-2" : "L'adresse e-mail ne peut pas être vide",
-        "text-3" : "Le numéro de téléphone ne peut pas être vide",
-        "text-4" : "Le sujet ne peut pas être vide",
-        "text-5" : "Le message ne peut pas être vide",
-        "text-6" : "Envoyer un message",
-        "field-1" : "Nom et Prénom",
-        "field-2" :"Mail",
-        "field-3" : "Numéro de téléphone",
-        "field-4" :"Sujet",
-        "copy" : "Copyright &copie par Feyza Tinastepe | Tous droits réservés"
-    },
- 
+        "home-description": "J'ai 20 ans et je suis actuellement étudiante en deuxième année d'une Bachelore de Technologie (BUT) en Informatique à Annecy...",
+        
+        // ABOUT
+        "about-greeting": "SALUT !",
+        "about-name": "JE SUIS <span>FEYZA</span>",
+        "badge-data": "ÉTUDIANTE DATA",
+        "badge-design": "PASSIONNÉE DE DESIGN",
+        "about-desc": "J'ai 21 ans et je prépare actuellement un <strong>BUT Informatique (parcours AGED)</strong>. Mon parcours a débuté par une formation scientifique (2020-2023), où j'ai développé un esprit analytique rigoureux que j'applique aujourd'hui à l'analyse de données et au développement logiciel. Je suis également passionnée de sport (Basket, Volley) et de design graphique.",
+        "btn-contact-me": "ME CONTACTER",
+        "btn-download-cv": "TÉLÉCHARGER CV",
+
+        // EDUCATION
+        "edu-hs-date": "2020 - 2023",
+        "edu-hs-title": "Baccalauréat STL",
+        "edu-hs-place": "Lycée Jean Monnet, Annemasse",
+        "edu-hs-desc": "Sciences et Technologies de Laboratoire. Obtention avec Mention Bien.",
+        "edu-but1-date": "2023 - 2025",
+        "edu-but1-title": "BUT Informatique",
+        "edu-but1-place": "IUT Annecy, France",
+        "edu-but1-desc": "<strong>Formation Initiale</strong>. Acquisition des fondamentaux en développement logiciel, technologies web et bases de données.",
+        "edu-pixel-date": "Mars - Juin 2025",
+        "edu-pixel-title": "Stage Data",
+        "edu-pixel-place": "PixelRaise, Fillinges",
+        "edu-pixel-desc": "Développement de solutions web et automatisation du traitement de données.",
+        "edu-but2-date": "2025 - Présent",
+        "edu-but2-title": "BUT Informatique (AGED)",
+        "edu-but2-place": "Centre de formation Tetras, Annecy",
+        "edu-but2-desc": "Spécialisation <strong>AGED</strong> (Administration, Gestion et Exploitation des Données) en alternance.",
+        "edu-work-date": "2025 - Présent",
+        "edu-work-title": "Apprentie Data",
+        "edu-work-place": "Annemasse Agglo, Ville-La-Grand",
+        "edu-work-desc": "Application de la gouvernance et de la gestion des données au sein d'une collectivité territoriale.",
+
+        // DASHBOARD
+        "dash-title": "Analyse <span>De Données</span>",
+        "dash-subtitle": "Analyse statistique de mon profil technique et de mes réalisations.",
+        "kpi-bigdata": "Projets Big Data",
+        "kpi-ai": "Modèles IA",
+        "kpi-total": "Total Projets",
+        "kpi-lang": "Langues Parlées",
+        "chart-radar-title": "<i class='bx bx-radar'></i> Spectre Data",
+        "chart-polar-title": "<i class='bx bx-atom'></i> Écosystème Tech",
+        "chart-bar-title": "<i class='bx bx-bar-chart-alt-2'></i> Niveau de Maîtrise Technique",
+
+        // SKILLS
+        "skills-title": "Tableau de Bord <span>Technique</span>",
+        "filter-all": "Tous",
+        "filter-data": "Data & Analytics",
+        "filter-dev": "Développement",
+        "filter-design": "Créatif & CMS",
+        "filter-tools": "Gestion de Projet",
+        "lang-title": "<i class='bx bx-globe'></i> Langues",
+        "lang-fr": "Français",
+        "lang-tr": "Turc",
+        "lang-en": "Anglais",
+        "lang-kr": "Coréen",
+        "lang-es": "Espagnol",
+        "lvl-native": "Langue Maternelle",
+        "lvl-b2": "B2 Intermédiaire Sup.",
+        "lvl-b1b2": "B1/B2 Intermédiaire",
+        "lvl-b1": "B1 Intermédiaire Inf.",
+        "soft-title": "<i class='bx bx-star'></i> Savoir-Être",
+        "soft-creativity": "🎨 Créativité",
+        "soft-comm": "📢 Communication",
+        "soft-prod": "📈 Productivité",
+        "soft-team": "🤝 Travail d'équipe",
+
+        // PROJECTS
+        "proj-title": "Mes <span>Projets</span>",
+        "proj-subtitle": "Une sélection de mes travaux en Data, Développement Web et Logiciel.",
+        "btn-code": "Code",
+        "btn-progress": "En Cours",
+        "cat-bigdata": "Big Data & IA",
+        "proj-imdb-title": "Analyse de Sentiments IMDb",
+        "proj-imdb-desc": "Architecture décisionnelle complète : Base SQL Server optimisée (OLTP), Entrepôt de données (OLAP) et modèles IA (NLP) pour l'analyse des avis.",
+        "cat-mining": "Data Mining",
+        "proj-mba-title": "Analyse du Panier",
+        "proj-mba-desc": "Analyse de transactions E-commerce : nettoyage, statistiques descriptives et extraction de règles d'association (algorithme Apriori).",
+        "cat-graph": "Base de Données Graphe",
+        "proj-neo-title": "Analyse de Réseau Social",
+        "proj-neo-desc": "Modélisation et analyse d'interactions utilisateurs. Détection de communautés et calculs de centralité via requêtes Cypher.",
+        "cat-de-bi": "Data Engineering & BI",
+        "proj-off-title": "Analytics Open Food Facts",
+        "proj-off-desc": "Architecture BI complète (OLTP/OLAP). Pipeline ETL via Knime, tableaux de bord Power BI et modèles prédictifs.",
+        "cat-db": "Base de Données & Analytics",
+        "proj-sco-title": "Gestion Scodoc",
+        "proj-sco-desc": "Gestion de données académiques : Modélisation complète (UML), implémentation SQL sur PostgreSQL et reporting Power BI.",
+        "cat-cyber": "Cybersécurité",
+        "proj-sec-title": "Transfert de Fichiers Sécurisé",
+        "proj-sec-desc": "Système client-serveur Python sécurisé. Échange de clés RSA, chiffrement de fichiers AES et hachage SHA-3.",
+        "cat-web": "Développement Web",
+        "proj-hack-title": "Hackathon Annecy",
+        "proj-hack-desc": "Projet de groupe : Développement du site web de l'IAF selon les besoins client dans un délai de 48 heures.",
+        "cat-webapp": "App Web",
+        "proj-uber-title": "Projet Uber",
+        "proj-uber-desc": "Développement d'un clone du site Uber en équipe de cinq, utilisant l'architecture MVC.",
+        "cat-game": "Dév Jeu Vidéo",
+        "proj-ugur-title": "UGUR",
+        "proj-ugur-desc": "Jeu sous Unity centré sur la réalisation de défis et d'objectifs dans un temps limité.",
+        "proj-slice-title": "Slice Fruit",
+        "proj-slice-desc": "Jeu d'arcade où les joueurs tranchent des fruits tombants dans un temps imparti pour marquer des points.",
+        "cat-2d": "Jeu 2D",
+        "proj-phaser-title": "Phaser TD",
+        "proj-phaser-desc": "Projet de classe utilisant le framework Phaser : implémentation d'animations, d'interactions et de logique de jeu.",
+        "cat-desktop": "App Bureau",
+        "proj-bot-title": "Gestion Botanic",
+        "proj-bot-desc": "Application de gestion de bureau dotée d'une interface interactive et conviviale.",
+        "cat-hard": "Hardware & Guide",
+        "proj-rpi-title": "Guide Raspberry Pi 3",
+        "proj-rpi-desc": "Guide de configuration détaillé : préparation de la carte SD, installation de l'OS et configuration réseau.",
+
+        // CONTACT
+        "contact-title": "Contactez-<span>Moi !</span>",
+        "contact-info-title": "Informations de Contact",
+        "contact-info-sub": "N'hésitez pas à me contacter pour toute opportunité ou collaboration.",
+        "contact-phone": "Téléphone :",
+        "contact-email": "Email :",
+        "contact-addr": "Adresse :",
+        "contact-follow": "Suivez-moi :",
+        "form-title": "Envoyer un Message",
+        "ph-name": "Nom Complet",
+        "ph-email": "Adresse Email",
+        "ph-phone": "Numéro de Téléphone",
+        "ph-subject": "Sujet",
+        "ph-message": "Votre message...",
+        "btn-send": "Envoyer",
+        "copy": "Copyright &copy par Feyza Tinastepe | Tous droits réservés"
+    }
 };
 
-// fonction pour changer la langue
+/* =========================================
+   3. LOGIQUE DE TRADUCTION
+   ========================================= */
 function changeLanguage(lang) {
     document.querySelectorAll("[data-key]").forEach(element => {
         const key = element.getAttribute("data-key");
-        if (translations[lang][key]) {
-            element.textContent = translations[lang][key];
+        if (translations[lang] && translations[lang][key]) {
+            // Si c'est un input ou textarea, on change le placeholder
+            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                element.placeholder = translations[lang][key];
+            } else {
+                element.innerHTML = translations[lang][key]; 
+            }
         }
+    });
+    // Sauvegarder la langue
+    localStorage.setItem('lang', lang);
+}
+
+// Gestionnaire d'événement pour le select
+const langSelect = document.querySelector(".language-select");
+if (langSelect) {
+    // 1. Charger la langue sauvegardée au démarrage
+    const storedLang = localStorage.getItem('lang') || 'en';
+    langSelect.value = storedLang;
+    changeLanguage(storedLang);
+
+    // 2. Changer la langue au click
+    langSelect.addEventListener("change", (e) => {
+        changeLanguage(e.target.value);
     });
 }
 
-document.querySelectorAll(".language-section a").forEach(link => {
-    link.addEventListener("click", event => {
-        event.preventDefault();
-        const lang = link.getAttribute("data-lang");
-        changeLanguage(lang);
-    });
-});
 
-//menu navbar
+/* =========================================
+   4. MENU NAVBAR (MOBILE)
+   ========================================= */
 let menuIcon = document.querySelector('#menu-icon');
 let navbar = document.querySelector('.navbar');
 
-menuIcon.onclick = () =>{
-    menuIcon.classList.toggle('bx-x');
-    navbar.classList.toggle('active');
-};
-/*scroll section active link*/
+if (menuIcon && navbar) {
+    menuIcon.onclick = () => {
+        menuIcon.classList.toggle('bx-x');
+        navbar.classList.toggle('active');
+    };
+}
+
+
+/* =========================================
+   5. SCROLL SECTIONS & STICKY HEADER
+   ========================================= */
 let sections = document.querySelectorAll('section');
 let navLinks = document.querySelectorAll('header nav a');
+let header = document.querySelector('.header');
 
 window.onscroll = () => {
+    // Sticky Header
+    if (header) {
+        header.classList.toggle('sticky', window.scrollY > 100);
+    }
+
+    // Active Links
     sections.forEach(sec => {
         let top = window.scrollY;
         let offset = sec.offsetTop - 150;
         let height = sec.offsetHeight;
         let id = sec.getAttribute('id');
 
-        if(top >=offset && top < offset + height) {
+        if (top >= offset && top < offset + height) {
             navLinks.forEach(links => {
                 links.classList.remove('active');
-                document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
+                const targetLink = document.querySelector('header nav a[href*=' + id + ']');
+                if (targetLink) targetLink.classList.add('active');
             });
-        };
+        }
     });
-/*navbar*/ 
-let header = document.querySelector('.header');
 
-header.classList.toggle('sticky', window.scrollY > 100);
-
-//enlever le menu 
-menuIcon.classList.remove('bx-x');
-navbar.classList.remove('active');
+    // Fermer le menu mobile au scroll
+    if (menuIcon && navbar) {
+        menuIcon.classList.remove('bx-x');
+        navbar.classList.remove('active');
+    }
 };
-/*contact*/ 
-const form = document.querySelector("form");
-const fullName = document.getElementById("name");
-const email = document.getElementById("email");
-const phone = document.getElementById("phone");
-const subject = document.getElementById("subject");
-const mess = document.getElementById("message");
 
-function sendEmail(){
-    const bodyMesssage = 'Full Name : ' + fullName.value + '<br>Email : ' + email.value + '<br>Phone Number : ' + phone.value + '<br>Message : ' + mess.value;
-   
-    Email.send({
-    SecureToken :"d5f6666d-19e1-4fdb-b1d5-f14ea964d974",
-    To : 'tinastepefeyza@gmail.com',
-    From : "tinastepefeyza@gmail.com",
-    Subject : subject.value,
-    Body : bodyMesssage
-}).then(
-  message => {
-    if (message == "OK"){
-        Swal.fire({
-            title: "Success!",
-            text: "Message sent successfully!",
-            icon: "success"
-        });
-    }
-  }
-);
+
+/* =========================================
+   6. FORMULAIRE DE CONTACT (SMTP.js)
+   ========================================= */
+const form = document.querySelector(".contact-form");
+if (form) {
+    // Note: Assure-toi d'avoir ajouté id="name", id="email", etc. dans ton HTML
+    const fullName = document.getElementById("name");
+    const email = document.getElementById("email");
+    const phone = document.getElementById("phone");
+    const subject = document.getElementById("subject");
+    const mess = document.getElementById("message");
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        
+        // Vérification simple
+        if(fullName.value == "" || email.value == "" || mess.value == "") {
+             Swal.fire({
+                title: "Erreur!",
+                text: "Veuillez remplir les champs obligatoires!",
+                icon: "error"
+            });
+            return;
+        }
+
+        // Configuration du corps de l'email
+        const bodyMessage = `Nom: ${fullName.value} <br> Email: ${email.value} <br> Tel: ${phone.value} <br> Sujet: ${subject.value} <br> Message: ${mess.value}`;
+
+        // Envoi via SMTP.js
+        // IMPORTANT : Remplace "TON_SECURE_TOKEN" par celui généré sur smtpjs.com
+        Email.send({
+            SecureToken : "TON_SECURE_TOKEN_ICI", 
+            To : 'Feyza.Tinastepe@etu.univ-smb.fr', // Ton email
+            From : "ton_email_smtp@gmail.com", // L'email configuré sur SMTPJS
+            Subject : subject.value,
+            Body : bodyMessage
+        }).then(
+          message => {
+             if(message == "OK") {
+                 Swal.fire({
+                    title: "Succès!",
+                    text: "Message envoyé avec succès!",
+                    icon: "success"
+                });
+                form.reset();
+             } else {
+                 Swal.fire({
+                    title: "Erreur!",
+                    text: "Erreur lors de l'envoi: " + message,
+                    icon: "error"
+                });
+             }
+          }
+        );
+    });
 }
 
-function checkInputs(){
-    const items = document.querySelectorAll(".item");
 
-    for (const item of items){
-        if(item.value == ""){
-            item.classList.add("error");
-            item.parentElement.classList.add("error");
-        }
+/* =========================================
+   7. SCROLL REVEAL (ANIMATIONS)
+   ========================================= */
+if (typeof ScrollReveal !== 'undefined') {
+    const sr = ScrollReveal({
+        reset: true,
+        distance: '80px',
+        duration: 2000,
+        delay: 200
+    });
 
-        if (items[1].value != ""){
-            checkEmail();
-        }
-        items[1].addEventListener("keyup", () => {
-            checkEmail();
-        })
-        item.addEventListener("keyup", () =>{
-            if (item.value != "") {
-                item.classList.remove("error");
-                item.parentElement.classList.remove("error");
-            }
-            else {
-                item.classList.add("error");
-                item.parentElement.classList.add("error");
-            }
-        });
-    }
+    // Haut
+    sr.reveal('.heading', { origin: 'top' });
+
+    // Bas (J'ai ajouté .projects-grid et .contact-info-panel ici)
+    sr.reveal('.services-container, .projects-box, .contact form, .kpi-grid, .charts-grid, .h-item, .skills-grid, .bottom-flex, .projects-grid, .contact-info-panel', { origin: 'bottom' });
+
+    // Gauche
+    sr.reveal('.home-content h1, .about-img img', { origin: 'left' });
+
+    // Droite
+    sr.reveal('.home-content h3, .home-content p, .about-content', { origin: 'right' });
 }
-
-function checkEmail(){
-    const emailRegex = /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,3})(\.[a-z]{2,3})?$/;
-   const errorTxtEmail = document.querySelector(".error-txt.email");
-   
-    if(!email.value.match(emailRegex)) {
-        email.classList.add("error");
-        email.parentElement.classList.add("error");
-
-        if (email.value != ""){
-            errorTxtEmail.innerText = "Enter a valid email address";
-        }
-        else {
-            errorTxtEmail.innerText = "Email Address can't be blank"
-        }
-    }
-    else {
-        email.classList.remove("error");
-        email.parentElement.classList.remove("error");
-    }
-}
-
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    checkInputs();   
-    
-    if (!fullName.classList.contains("error") && !email.classList.contains("error") && !phone.classList.contains("error") && !subject.classList.contains("error") && !mess.classList.contains("error")){
-        sendEmail();
-
-        form.reset();
-        return false;
-    }
-});
-//scroll reveal
-ScrollReveal({ 
-    reset: true,
-    distance: '80px',
-    duration: 2000,
-    delay: 200 
-});
-ScrollReveal().reveal(' .heading', { origin: 'top' });
-ScrollReveal().reveal('.services-container, .projects-box, .contact form, .container1, .interests-container, .contact-container, .timeline',{ origin: 'bottom' });
-ScrollReveal().reveal('.home-content h1, .about-img img, .Technical-bars',{ origin: 'left' });
-ScrollReveal().reveal('.home-content h3, .home-content p, .about-content, .radial-bars, .language-list ,.home, .profession-box .profession-container .overlay',{ origin: 'right' });

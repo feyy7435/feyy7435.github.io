@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Feyza Tinastepe</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+</head>
+<body class="projects-page">
+
+    <header class="header">
+        <a href="index.html" class="logo" data-key="logo">Portfolio.</a>
+
+        <nav class="navbar">
+            <a href="index.html" data-key="nav-home">Home</a>
+            <a href="about.html" data-key="nav-about">About</a>
+            <a href="education.html" data-key="nav-education">Education</a>
+            <a href="skills.html" data-key="nav-skills">Skills</a>
+            <a href="projects.html" class="active" data-key="nav-portfolio">Portfolio</a>
+            <a href="dashboard.html" data-key="nav-dashboard">Dashboard</a>
+            <a href="contact.html" data-key="nav-contact">Contact</a>
+        </nav>
+
+        <div class="header-right">
+            <div class="toggle">
+                <i class='bx bx-moon toggle-icon'></i>
+            </div>
+            <select class="language-select">
+                <option value="en" selected>EN</option>
+                <option value="fr">FR</option>
+            </select>
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+    </header>
+
+    <main class="projects-container">
+        <h1 class="page-title" data-key="proj-title">My <span>Projects</span></h1>
+        <p class="subtitle" data-key="proj-subtitle">A selection of my work in Data, Web Development, and Software Engineering.</p>
+
+        <div class="projects-filter">
+            <button class="p-filter-btn active" onclick="filterProjects('all', event)" data-key="filter-all">All</button>
+            <button class="p-filter-btn" onclick="filterProjects('data', event)" data-key="filter-data">Data & AI</button>
+            <button class="p-filter-btn" onclick="filterProjects('web', event)" data-key="filter-web">Web Dev</button>
+            <button class="p-filter-btn" onclick="filterProjects('app', event)" data-key="filter-app">Software & Games</button>
+        </div>
+
+        <div class="projects-grid">
+            
+            <div class="project-card" data-category="data">
+                <div class="project-img">
+                    <img src="images/IMDB_Logo_2016.svg" alt="IMDb Analytics & AI">
+                    <div class="overlay">
+                        <a href="#" class="github-btn" target="_blank"><i class='bx bxl-github'></i> <span data-key="btn-progress">In Progress</span></a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <span class="category-tag" data-key="cat-bigdata">Big Data & AI</span>
+                    <h3 data-key="proj-imdb-title">IMDb Sentiment Analysis</h3>
+                    <p data-key="proj-imdb-desc">End-to-end decision-making architecture: Optimized SQL Server base (OLTP), Data Warehouse (OLAP), and AI models (NLP) for review sentiment analysis.</p>
+                    <div class="tech-stack">
+                        <span>SQL Server</span>
+                        <span>Python (NLP)</span>
+                        <span>Power BI</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="data">
+                <div class="project-img">
+                    <img src="images/python.png" alt="Market Basket Analysis">
+                    <div class="overlay">
+                        <a href="https://github.com/sftss/TP-Data-MLxtend.git" class="github-btn" target="_blank"><i class='bx bxl-github'></i> <span data-key="btn-code">Code</span></a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <span class="category-tag" data-key="cat-mining">Data Mining</span>
+                    <h3 data-key="proj-mba-title">Market Basket Analysis</h3>
+                    <p data-key="proj-mba-desc">E-commerce transaction analysis: data cleaning, descriptive statistics, and association rule extraction (Apriori algorithm).</p>
+                    <div class="tech-stack">
+                        <span>Python</span>
+                        <span>MLxtend</span>
+                        <span>Pandas</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="data">
+                <div class="project-img">
+                    <img src="images/Neo4j-logo_color.png" alt="Neo4j Graph Analysis">
+                    <div class="overlay">
+                        <a href="https://github.com/sftss/NEO4J_RS" class="github-btn" target="_blank"><i class='bx bxl-github'></i> <span data-key="btn-code">Code</span></a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <span class="category-tag" data-key="cat-graph">Graph Database</span>
+                    <h3 data-key="proj-neo-title">Social Network Analysis</h3>
+                    <p data-key="proj-neo-desc">Modeling and analysis of user interactions. Community detection and centrality calculations using Cypher queries.</p>
+                    <div class="tech-stack">
+                        <span>Neo4j</span>
+                        <span>Cypher</span>
+                        <span>Python</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="data">
+                <div class="project-img">
+                    <img src="images/openfoodfacts-logo.jpg" alt="Open Food Facts Analysis" >
+                    <div class="overlay">
+                        <a href="#" class="github-btn" target="_blank"><i class='bx bxl-github'></i> <span data-key="btn-code">Code</span></a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <span class="category-tag" data-key="cat-de-bi">Data Engineering & BI</span>
+                    <h3 data-key="proj-off-title">Open Food Facts Analytics</h3>
+                    <p data-key="proj-off-desc">Full BI architecture (OLTP/OLAP). ETL pipeline via Knime, Power BI dashboards, and AI models for predictive analytics.</p>
+                    <div class="tech-stack">
+                        <span>Azure SQL</span>
+                        <span>Knime</span>
+                        <span>Power BI</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="data">
+                <div class="project-img">
+                    <img src="images/scodoc.png" alt="Scodoc Database Project">
+                    <div class="overlay">
+                        <a href="#" class="github-btn" target="_blank"><i class='bx bxl-github'></i> <span data-key="btn-code">Code</span></a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <span class="category-tag" data-key="cat-db">Database & Analytics</span>
+                    <h3 data-key="proj-sco-title">Scodoc Management</h3>
+                    <p data-key="proj-sco-desc">Academic data management: Full modeling (UML), SQL implementation on PostgreSQL, and Power BI reporting.</p>
+                    <div class="tech-stack">
+                        <span>PostgreSQL</span>
+                        <span>UML</span>
+                        <span>Power BI</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="app">
+                <div class="project-img">
+                    <img src="images/crypto.jpg" alt="Secure File Transfer">
+                    <div class="overlay">
+                        <a href="#" class="github-btn" target="_blank"><i class='bx bxl-github'></i> <span data-key="btn-code">Code</span></a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <span class="category-tag" data-key="cat-cyber">Cybersecurity</span>
+                    <h3 data-key="proj-sec-title">Secure File Transfer</h3>
+                    <p data-key="proj-sec-desc">Secure Python client-server system. Key exchange via RSA, file encryption using AES, and SHA-3 hashing.</p>
+                    <div class="tech-stack">
+                        <span>Python</span>
+                        <span>RSA / AES</span>
+                        <span>Sockets</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="web">
+                <div class="project-img">
+                    <img src="images/iaf-logo.png" alt="Hackathon Annecy">
+                    <div class="overlay">
+                        <a href="https://github.com/feyy7435/Hackathon.git" class="github-btn" target="_blank"><i class='bx bxl-github'></i> <span data-key="btn-code">Code</span></a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <span class="category-tag" data-key="cat-web">Web Development</span>
+                    <h3 data-key="proj-hack-title">Hackathon Annecy</h3>
+                    <p data-key="proj-hack-desc">Group project: Development of the IAF website based on client requirements within a 48-hour deadline.</p>
+                    <div class="tech-stack">
+                        <span>HTML/CSS</span>
+                        <span>Teamwork</span>
+                        <span>Responsive</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="web">
+                <div class="project-img">
+                    <img src="images/uber.jpg" alt="Uber Clone">
+                    <div class="overlay">
+                        <a href="https://github.com/feyy7435/Uber.git" class="github-btn" target="_blank"><i class='bx bxl-github'></i> <span data-key="btn-code">Code</span></a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <span class="category-tag" data-key="cat-webapp">Web App</span>
+                    <h3 data-key="proj-uber-title">Uber Project</h3>
+                    <p data-key="proj-uber-desc">Development of an Uber clone website in a team of five, utilizing MVC architecture.</p>
+                    <div class="tech-stack">
+                        <span>Laravel</span>
+                        <span>PHP</span>
+                        <span>MVC</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="app">
+                <div class="project-img game-card-img">
+                    <img src="images/UGUR.jpg" alt="UGUR Game">
+                    <div class="overlay">
+                        <a href="https://github.com/Shuuss/UGUR.git" class="github-btn" target="_blank"><i class='bx bxl-github'></i> <span data-key="btn-code">Code</span></a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <span class="category-tag" data-key="cat-game">Game Dev</span>
+                    <h3 data-key="proj-ugur-title">UGUR</h3>
+                    <p data-key="proj-ugur-desc">A Unity-based game focused on completing challenges and objectives within a strict time limit.</p>
+                    <div class="tech-stack">
+                        <span>Unity 3D</span>
+                        <span>C#</span>
+                        <span>Game Logic</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="app">
+                <div class="project-img game-card-img">
+                    <img src="images/imgSliceFruit.jpg" alt="Slice Fruit">
+                    <div class="overlay">
+                        <a href="https://github.com/feyy7435/SliceFruit.git" class="github-btn" target="_blank"><i class='bx bxl-github'></i> <span data-key="btn-code">Code</span></a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <span class="category-tag" data-key="cat-game">Game Dev</span>
+                    <h3 data-key="proj-slice-title">Slice Fruit</h3>
+                    <p data-key="proj-slice-desc">Arcade-style game where players slice falling fruit within a time limit to score points.</p>
+                    <div class="tech-stack">
+                        <span>Unity</span>
+                        <span>C#</span>
+                        <span>Arcade</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="app">
+                <div class="project-img game-card-img">
+                    <img src="images/phaser.jpg" alt="Phaser Game">
+                    <div class="overlay">
+                        <a href="https://github.com/feyy7435/Phaser.git" class="github-btn" target="_blank"><i class='bx bxl-github'></i> <span data-key="btn-code">Code</span></a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <span class="category-tag" data-key="cat-2d">2D Game</span>
+                    <h3 data-key="proj-phaser-title">Phaser TD</h3>
+                    <p data-key="proj-phaser-desc">Class project using the Phaser framework: implementing animations, interactions, and game logic.</p>
+                    <div class="tech-stack">
+                        <span>JavaScript</span>
+                        <span>Phaser</span>
+                        <span>Web Game</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="app">
+                <div class="project-img game-card-img">
+                    <img src="images/ProjetBotanicFigma.jpg" alt="Botanic App">
+                    <div class="overlay">
+                        <a href="https://github.com/feyy7435/Projet_Botanic.git" class="github-btn" target="_blank"><i class='bx bxl-github'></i> <span data-key="btn-code">Code</span></a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <span class="category-tag" data-key="cat-desktop">Desktop App</span>
+                    <h3 data-key="proj-bot-title">Botanic Management</h3>
+                    <p data-key="proj-bot-desc">Desktop management application featuring an interactive and user-friendly interface.</p>
+                    <div class="tech-stack">
+                        <span>C#</span>
+                        <span>WPF</span>
+                        <span>.NET</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="app">
+                <div class="project-img">
+                    <img src="images/rasberrypi3.png" alt="Raspberry Pi">
+                    <div class="overlay">
+                        <a href="https://github.com/feyy7435/RaspberryPi-3.git" class="github-btn" target="_blank"><i class='bx bxl-github'></i> <span data-key="btn-code">Code</span></a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <span class="category-tag" data-key="cat-hard">Hardware & Guide</span>
+                    <h3 data-key="proj-rpi-title">Raspberry Pi 3 Guide</h3>
+                    <p data-key="proj-rpi-desc">Detailed configuration guide: SD card preparation, OS installation, and network setup.</p>
+                    <div class="tech-stack">
+                        <span>Linux</span>
+                        <span>Hardware</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="main.js"></script>
+
+    <script>
+        function filterProjects(cat, event) {
+            const cards = document.querySelectorAll('.project-card');
+            const btns = document.querySelectorAll('.p-filter-btn');
+
+            btns.forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            cards.forEach(card => {
+                // Animation reset
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    if(cat === 'all' || card.getAttribute('data-category') === cat) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 50);
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }, 200);
+            });
+        }
+    </script>
+</body>
+</html>

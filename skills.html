@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills - Feyza Tinastepe</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap" rel="stylesheet">   
+</head>
+<body class="skills-page">
+
+<header class="header">
+    <a href="index.html" class="logo" data-key="logo">Portfolio.</a>
+
+    <nav class="navbar">
+        <a href="index.html" data-key="nav-home">Home</a>
+        <a href="about.html" data-key="nav-about">About</a>
+        <a href="education.html" data-key="nav-education">Education</a>
+        <a href="skills.html" class="active" data-key="nav-skills">Skills</a>
+        <a href="projects.html" data-key="nav-portfolio">Portfolio</a>
+        <a href="dashboard.html" data-key="nav-dashboard">Dashboard</a>
+        <a href="contact.html" data-key="nav-contact">Contact</a>
+    </nav>
+
+    <div class="header-right">
+        <div class="toggle">
+            <i class='bx bx-moon toggle-icon'></i>
+        </div>
+        <select class="language-select">
+            <option value="en" selected>EN</option>
+            <option value="fr">FR</option>
+        </select>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </div>
+</header>
+
+<main class="skills-container">
+    <h1 class="skills-title" data-key="skills-title">Technical <span>Dashboard</span></h1>
+
+    <div class="skills-filter">
+        <button class="filter-btn active" onclick="filterSkills('all', event)" data-key="filter-all">All</button>
+        <button class="filter-btn" onclick="filterSkills('data', event)" data-key="filter-data">Data & Analytics</button>
+        <button class="filter-btn" onclick="filterSkills('dev', event)" data-key="filter-dev">Development</button>
+        <button class="filter-btn" onclick="filterSkills('design', event)" data-key="filter-design">Creative & CMS</button>
+        <button class="filter-btn" onclick="filterSkills('tools', event)" data-key="filter-tools">Management</button>
+    </div>
+
+    <section class="skills-section">
+        <div class="skills-grid" id="skillsGrid">
+            <div class="skill-card" data-cat="data"><i class='bx bxl-python' style="color: #3776AB;"></i><p>Python</p></div>
+            <div class="skill-card" data-cat="data"><i class='bx bxs-data' style="color: #4479A1;"></i><p>MySQL</p></div>
+            <div class="skill-card" data-cat="data"><i class='bx bxl-postgresql' style="color: #336791;"></i><p>PostgreSQL</p></div>
+            <div class="skill-card" data-cat="data"><i class='bx bxs-bar-chart-alt-2' style="color: #F2C811;"></i><p>Power BI</p></div>
+            <div class="skill-card" data-cat="data"><i class='bx bx-data' style="color: #EB8C33;"></i><p>KNIME</p></div>
+            <div class="skill-card" data-cat="data"><i class='bx bxs-leaf' style="color: #47A248;"></i><p>MongoDB</p></div>
+            <div class="skill-card" data-cat="data"><i class='bx bxs-book-content' style="color: #F37626;"></i><p>Jupyter</p></div>
+            <div class="skill-card" data-cat="data"><i class='bx bxs-data' style="color: #003B57;"></i><p>SQLite</p></div>
+            <div class="skill-card" data-cat="data"><i class='bx bx-network-chart' style="color: #ff85a2;"></i><p>Power AMC</p></div>
+
+            <div class="skill-card" data-cat="dev"><i class='bx bxl-visual-studio' style="color: #5C2D91;"></i><p>C# / WPF</p></div>
+            <div class="skill-card" data-cat="dev"><i class='bx bxl-php' style="color: #777BB4;"></i><p>PHP</p></div>
+            <div class="skill-card" data-cat="dev"><i class='bx bxl-javascript' style="color: #F7DF1E;"></i><p>JavaScript</p></div>
+            <div class="skill-card" data-cat="dev"><i class='bx bxl-docker' style="color: #2496ED;"></i><p>Docker</p></div>
+            <div class="skill-card terminal-card" data-cat="dev">
+                <i class='bx bxs-terminal' style="color: #4EAA25;"></i>
+                <p>PowerShell / SSH</p>
+            </div>
+            <div class="skill-card" data-cat="dev"><i class='bx bxl-unity' style="color: #222C37;"></i><p>Unity 3D</p></div>
+            <div class="skill-card" data-cat="dev"><i class='bx bx-chip' style="color: #C51A4A;"></i><p>Raspberry Pi</p></div>
+            <div class="skill-card" data-cat="dev"><i class='bx bx-shape-triangle' style="color: #3B668F;"></i><p>Modelio (UML)</p></div>
+
+            <div class="skill-card" data-cat="design"><i class='bx bxl-adobe' style="color: #FF0000;"></i><p>Illustrator</p></div>
+            <div class="skill-card" data-cat="design"><i class='bx bxl-figma' style="color: #F24E1E;"></i><p>Figma</p></div>
+            <div class="skill-card" data-cat="design"><i class='bx bxs-paint' style="color: #00C4CC;"></i><p>Canva</p></div>
+            <div class="skill-card" data-cat="design"><i class='bx bxl-wordpress' style="color: #21759B;"></i><p>WordPress</p></div>
+
+            <div class="skill-card office-card" data-cat="tools">
+                <i class='bx bxl-microsoft' style="color: #EB3C00;"></i>
+                <p>MS Office</p>
+            </div>
+            <div class="skill-card" data-cat="tools"><i class='bx bx-notepad' style="color: #000000;"></i><p>Notion</p></div>
+            <div class="skill-card" data-cat="tools"><i class='bx bxl-trello' style="color: #0079BF;"></i><p>Trello</p></div>
+            <div class="skill-card" data-cat="tools"><i class='bx bxl-microsoft-teams' style="color: #6264A7;"></i><p>Teams</p></div>
+            <div class="skill-card" data-cat="tools"><i class='bx bx-calendar-event' style="color: #2D8CFF;"></i><p>Gantt</p></div>
+        </div>
+    </section>
+
+    <div class="bottom-flex">
+        <div class="glass-panel languages">
+            <h2 data-key="lang-title"><i class='bx bx-globe'></i> Languages</h2>
+            
+            <div class="lang-box">
+                <div class="lang-info">
+                    <span class="flag">🇫🇷</span> 
+                    <span class="lang-name" data-key="lang-fr">French</span>
+                    <small class="lang-level" data-key="lvl-native">Native/Fluent</small>
+                </div>
+                <div class="level-bar full"></div>
+            </div>
+
+            <div class="lang-box">
+                <div class="lang-info">
+                    <span class="flag">🇹🇷</span>
+                    <span class="lang-name" data-key="lang-tr">Turkish</span>
+                    <small class="lang-level" data-key="lvl-native">Native/Fluent</small>
+                </div>
+                <div class="level-bar full"></div>
+            </div>
+
+            <div class="lang-box">
+                <div class="lang-info">
+                    <span class="flag">🇬🇧</span>
+                    <span class="lang-name" data-key="lang-en">English</span>
+                    <small class="lang-level" data-key="lvl-b2">B2 Upper Intermediate</small>
+                </div>
+                <div class="level-bar high"></div>
+            </div>
+
+            <div class="lang-box">
+                <div class="lang-info">
+                    <span class="flag">🇰🇷</span>
+                    <span class="lang-name" data-key="lang-kr">Korean</span>
+                    <small class="lang-level" data-key="lvl-b1b2">B1/B2 Intermediate</small>
+                </div>
+                <div class="level-bar mid-high"></div>
+            </div>
+
+            <div class="lang-box">
+                <div class="lang-info">
+                    <span class="flag">🇪🇸</span>
+                    <span class="lang-name" data-key="lang-es">Spanish</span>
+                    <small class="lang-level" data-key="lvl-b1">B1 Lower Intermediate</small>
+                </div>
+                <div class="level-bar mid"></div>
+            </div>
+        </div>
+
+        <div class="glass-panel soft-skills">
+            <h2 data-key="soft-title"><i class='bx bx-star'></i> Soft Skills</h2>
+            <div class="soft-grid">
+                <span class="soft-tag" data-key="soft-creativity">🎨 Creativity</span>
+                <span class="soft-tag" data-key="soft-comm">📢 Communication</span>
+                <span class="soft-tag" data-key="soft-prod">📈 Productivity</span>
+                <span class="soft-tag" data-key="soft-team">🤝 Teamwork</span>
+            </div>
+            <img src="images/Gemini_Generated_Image_hsuquahsuquahsuq.png" alt="Soft Skills Illustration">
+        </div>
+    </div>
+</main>
+
+<script src="https://unpkg.com/scrollreveal"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="main.js"></script>
+
+<script>
+    function filterSkills(category, event) {
+        const cards = document.querySelectorAll('.skill-card');
+        const btns = document.querySelectorAll('.filter-btn');
+        
+        // Gérer la classe active sur les boutons
+        btns.forEach(btn => btn.classList.remove('active'));
+        if(event) event.currentTarget.classList.add('active');
+
+        // Filtrer les cartes
+        cards.forEach(card => {
+            // Animation reset simple
+            card.style.opacity = '0';
+            card.style.transform = 'scale(0.8)';
+            
+            setTimeout(() => {
+                if (category === 'all' || card.getAttribute('data-cat') === category) {
+                    card.style.display = "flex";
+                    // Petit délai pour l'animation d'apparition
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    }, 50);
+                } else {
+                    card.style.display = "none";
+                }
+            }, 200);
+        });
+    }
+</script>
+
+</body>
+</html>
